@@ -1,0 +1,14 @@
+[package]
+name = "once-option"
+version = "0.1.0"
+edition = "2018"
+rust-version = "1.46"
+license = "MIT OR Apache-2.0"
+description = "A `OnceOption` type, similar to `Option`, with the constraint that once emptied it cannot be re-set to contain a value. Useful for members that need to be consumed on drop or cannot be re-set otherwise (e.g. to join a `JoinHandle` on drop)."
+repository = "https://github.com/xanathar/once-option"
+readme = "README.md"
+keywords = ['option', 'JoinHandle']
+categories = ["rust-patterns", "no-std", "no-std::no-alloc"]
+authors = ["Marco Mastropaolo <marco@mastropaolo.com>"]
+
+[dependencies]
