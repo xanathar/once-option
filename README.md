@@ -2,32 +2,32 @@
 
 ![CI](https://github.com/xanathar/logplotter/actions/workflows/CI.yml/badge.svg) ![Crates.io](https://img.shields.io/crates/v/once-option) ![docs.rs](https://img.shields.io/docsrs/once-option) ![Crates.io](https://img.shields.io/crates/d/once-option) ![Crates.io](https://img.shields.io/crates/l/once-option)
 
-The `once_option` crate defines a single type, [`struct@OnceOption`],
-with its constructing helper function, [`OnceOption()`].
+The `once_option` crate defines a single type, `OnceOption`,
+with its constructing helper function, `OnceOption()`.
 
 This crate is `no_std`.
 
-[`struct@OnceOption`] represents an optional value. Differently from
-[`Option`], an empty [`struct@OnceOption`] cannot be re-set to contain a
+`OnceOption` represents an optional value. Differently from
+`Option`, an empty `OnceOption` cannot be re-set to contain a
 value.
 
-Additionally, [`struct@OnceOption`] implements [`Deref`](std::ops::Deref)
-and [`DerefMut`](std::ops::DerefMut) so that its contents can be
+Additionally, `OnceOption` implements `Deref`
+and `DerefMut` so that its contents can be
 accessed without pattern-matching (but implicitly unwrapping).
 
-It supports comparisons ([`PartialEq`], [`Eq`], [`Ord`] or
-[`PartialOrd`]) with other [`struct@OnceOption`] containing the same type,
+It supports comparisons (`PartialEq`, `Eq`, `Ord` or
+`PartialOrd`) with other `OnceOption` containing the same type,
 as long as the contained type also implements those traits.
 Furthermore, it can be used as a hash key if the cotnained type
-is [`Hash`].
+is `Hash`.
 
-It supports being displayed if the contained type is [`Display`](std::fmt::Display),
-and forwards all the formatting traits (except [`Debug`] and
-[`Pointer`](std::fmt::Pointer)) to its contained-type.
+It supports being displayed if the contained type is `Display`,
+and forwards all the formatting traits (except `Debug` and
+`Pointer`) to its contained-type.
 
 # Rationale
 
-The main, but not only, purpose of [`struct@OnceOption`] is to simplify
+The main, but not only, purpose of `OnceOption` is to simplify
 and regulate the dropping of members that have methods consuming
 the values.
 
@@ -82,7 +82,7 @@ error: could not compile `playground` (lib) due to 1 previous error
 
 ```
 
-[`struct@OnceOption`]  can be used to fix the issue with minimal changes to the
+`OnceOption`  can be used to fix the issue with minimal changes to the
 code:
 
 ```rust
@@ -116,10 +116,10 @@ impl Drop for SomeType {
 ```
 
 # Representation
-[`struct@OnceOption<T>`] has the same ABI of [`Option<T>`]; this means that
-[`struct@OnceOption<T>`] has the same size, alignment, and function call ABI as [`Option<T>`].
+`OnceOption<T>` has the same ABI of `Option<T>`; this means that
+`OnceOption<T>` has the same size, alignment, and function call ABI as `Option<T>`.
 
-An implication of this, is that all the ABI guarantees that [`Option<T>`] makes
+An implication of this, is that all the ABI guarantees that `Option<T>` makes
 (i.e. being transmutable from a T under some conditions), also apply to
-[`struct@OnceOption<T>`]. For further details, see [the documentation for `Option`](core::option#representation).
+`OnceOption<T>`. For further details, see [the documentation for `Option`](https://doc.rust-lang.org/std/option/index.html#representation).
 
